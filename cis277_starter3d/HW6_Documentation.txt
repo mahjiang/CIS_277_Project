@@ -1,0 +1,13 @@
+Camera controls:
+
+Up arrow - rotate north
+Down arrow - rotate south
+Left arrow - rotate west
+Right arrow - rotate east
+1 - zoom out
+2 - zoom in
+
+Extra credit:
+Scroll down - zoom out
+Scroll up - zoom in
+drag to rotate in any direction

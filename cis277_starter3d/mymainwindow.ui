@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MyMainWindow</class>
+ <widget class="QMainWindow" name="MyMainWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>953</width>
+    <height>550</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>OpenGLDemo</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="4" column="2">
+     <widget class="MyGLWidget" name="widget" native="true">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>640</width>
+        <height>480</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>640</width>
+        <height>480</height>
+       </size>
+      </property>
+      <property name="mouseTracking">
+       <bool>false</bool>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::StrongFocus</enum>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="3">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>8</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Faces</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="MyFaceWidget" name="listWidget">
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Vertices</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="MyVertexWidget" name="listWidget_2">
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Half Edges</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="MyHalfEdgeWidget" name="listWidget_3">
+        <property name="selectionMode">
+         <enum>QAbstractItemView::MultiSelection</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="6" column="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>Split Quad</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="text">
+         <string>Shared Vertex to Edge</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_7">
+        <property name="text">
+         <string>Add Vertex to Edge</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="text">
+         <string>Remove Vertex</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="text">
+         <string>Move Vertex</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="text">
+         <string>Change Color</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="6" column="3">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>SPIN ON/OFF</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>953</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionQuit"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>MyGLWidget</class>
+   <extends>QWidget</extends>
+   <header>myglwidget.h</header>
+   <container>1</container>
+   <slots>
+    <signal>sendRoot(QTreeWidgetItem*)</signal>
+    <signal>sendFaceItem(QListWidgetItem*)</signal>
+    <signal>sendVertexItem(QListWidgetItem*)</signal>
+    <signal>sendHalfEdgeItem(QListWidgetItem*)</signal>
+    <signal>clearLists()</signal>
+    <signal>sendFace(QListWidgetItem*)</signal>
+    <signal>sort()</signal>
+    <slot>MakeMagic()</slot>
+    <slot>addNode()</slot>
+    <slot>reDraw()</slot>
+    <slot>clearGraph()</slot>
+    <slot>spin()</slot>
+    <slot>receiveFace(Face*)</slot>
+    <slot>receiveFaces(Face*,Face*)</slot>
+    <slot>splitQuad(Face*)</slot>
+    <slot>sharedVertexToEdge()</slot>
+    <slot>receiveVertex(Vertex*)</slot>
+    <slot>addVertex(HalfEdge*)</slot>
+    <slot>receiveHalfEdge(HalfEdge*)</slot>
+    <slot>deleteVertex()</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>MyHalfEdgeWidget</class>
+   <extends>QListWidget</extends>
+   <header>myhalfedgewidget.h</header>
+   <slots>
+    <signal>sendHalfEdge(HalfEdge*)</signal>
+    <signal>sendVertexHalfEdge(HalfEdge*)</signal>
+    <slot>addHalfEdgeItem(QListWidgetItem*)</slot>
+    <slot>addVertexToEdge()</slot>
+    <slot>removeVertex()</slot>
+    <slot>clearItems()</slot>
+    <slot>editText()</slot>
+    <slot>sortItems()</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>MyFaceWidget</class>
+   <extends>QListWidget</extends>
+   <header>myfacewidget.h</header>
+   <slots>
+    <signal>sendFace(Face*)</signal>
+    <signal>sendFaces(Face*,Face*)</signal>
+    <signal>callSplitQuad()</signal>
+    <slot>addFaceItem(QListWidgetItem*)</slot>
+    <slot>splitQuad()</slot>
+    <slot>sharedVertexToEdge()</slot>
+    <slot>changeColor()</slot>
+    <slot>clearItems()</slot>
+    <slot>editText()</slot>
+    <slot>selectFace(QListWidgetItem*)</slot>
+    <slot>sortItems()</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>MyVertexWidget</class>
+   <extends>QListWidget</extends>
+   <header>myvertexwidget.h</header>
+   <slots>
+    <signal>sendVertex(Vertex*)</signal>
+    <slot>addVertexItem(QListWidgetItem*)</slot>
+    <slot>sharedVertexToEdge()</slot>
+    <slot>removeVertex()</slot>
+    <slot>moveVertex()</slot>
+    <slot>clearItems()</slot>
+    <slot>editText()</slot>
+    <slot>sortItems()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>spin()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>943</x>
+     <y>537</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>551</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>sendFaceItem(QListWidgetItem*)</signal>
+   <receiver>listWidget</receiver>
+   <slot>addFaceItem(QListWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>536</x>
+     <y>104</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>720</x>
+     <y>103</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>sendVertexItem(QListWidgetItem*)</signal>
+   <receiver>listWidget_2</receiver>
+   <slot>addVertexItem(QListWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>544</x>
+     <y>264</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>807</x>
+     <y>269</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>sendHalfEdgeItem(QListWidgetItem*)</signal>
+   <receiver>listWidget_3</receiver>
+   <slot>addHalfEdgeItem(QListWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>592</x>
+     <y>406</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>680</x>
+     <y>410</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>listWidget</receiver>
+   <slot>splitQuad()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>530</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>693</x>
+     <y>124</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>listWidget_2</receiver>
+   <slot>sharedVertexToEdge()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>191</x>
+     <y>520</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>685</x>
+     <y>294</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>listWidget</receiver>
+   <slot>sharedVertexToEdge()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>137</x>
+     <y>521</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>669</x>
+     <y>145</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>listWidget_3</receiver>
+   <slot>addVertexToEdge()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>278</x>
+     <y>527</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>675</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>listWidget_3</receiver>
+   <slot>removeVertex()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>375</x>
+     <y>525</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>672</x>
+     <y>435</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>listWidget_2</receiver>
+   <slot>removeVertex()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>421</x>
+     <y>521</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>683</x>
+     <y>316</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>listWidget_2</receiver>
+   <slot>moveVertex()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>518</x>
+     <y>517</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>661</x>
+     <y>337</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>listWidget</receiver>
+   <slot>changeColor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>612</x>
+     <y>522</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>674</x>
+     <y>166</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listWidget</sender>
+   <signal>sendFaces(Face*,Face*)</signal>
+   <receiver>widget</receiver>
+   <slot>receiveFaces(Face*,Face*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>673</x>
+     <y>58</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>627</x>
+     <y>61</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listWidget</sender>
+   <signal>sendFace(Face*)</signal>
+   <receiver>widget</receiver>
+   <slot>splitQuad(Face*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>669</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>603</x>
+     <y>82</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listWidget_3</sender>
+   <signal>sendHalfEdge(HalfEdge*)</signal>
+   <receiver>widget</receiver>
+   <slot>addVertex(HalfEdge*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>707</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>529</x>
+     <y>465</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>reDraw()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>497</x>
+     <y>522</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>486</x>
+     <y>473</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>reDraw()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>580</x>
+     <y>526</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>582</x>
+     <y>488</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>sharedVertexToEdge()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>213</x>
+     <y>524</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>213</x>
+     <y>476</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>deleteVertex()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>401</x>
+     <y>522</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>401</x>
+     <y>496</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listWidget_3</sender>
+   <signal>sendVertexHalfEdge(HalfEdge*)</signal>
+   <receiver>widget</receiver>
+   <slot>receiveHalfEdge(HalfEdge*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>677</x>
+     <y>492</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>628</x>
+     <y>487</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listWidget_2</sender>
+   <signal>sendVertex(Vertex*)</signal>
+   <receiver>widget</receiver>
+   <slot>receiveVertex(Vertex*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>669</x>
+     <y>217</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>619</x>
+     <y>224</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>clearLists()</signal>
+   <receiver>listWidget</receiver>
+   <slot>clearItems()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>598</x>
+     <y>178</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>671</x>
+     <y>178</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>clearLists()</signal>
+   <receiver>listWidget_2</receiver>
+   <slot>clearItems()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>636</x>
+     <y>256</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>691</x>
+     <y>257</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>clearLists()</signal>
+   <receiver>listWidget_3</receiver>
+   <slot>clearItems()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>616</x>
+     <y>375</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>686</x>
+     <y>376</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listWidget</sender>
+   <signal>itemDoubleClicked(QListWidgetItem*)</signal>
+   <receiver>listWidget</receiver>
+   <slot>editText()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>888</x>
+     <y>57</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>929</x>
+     <y>91</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listWidget_2</sender>
+   <signal>itemDoubleClicked(QListWidgetItem*)</signal>
+   <receiver>listWidget_2</receiver>
+   <slot>editText()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>928</x>
+     <y>225</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>935</x>
+     <y>285</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>listWidget_3</sender>
+   <signal>itemDoubleClicked(QListWidgetItem*)</signal>
+   <receiver>listWidget_3</receiver>
+   <slot>editText()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>894</x>
+     <y>403</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>942</x>
+     <y>448</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>sendFace(QListWidgetItem*)</signal>
+   <receiver>listWidget</receiver>
+   <slot>selectFace(QListWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>645</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>676</x>
+     <y>115</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>sort()</signal>
+   <receiver>listWidget</receiver>
+   <slot>sortItems()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>617</x>
+     <y>136</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>757</x>
+     <y>133</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>sort()</signal>
+   <receiver>listWidget_2</receiver>
+   <slot>sortItems()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>637</x>
+     <y>308</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>809</x>
+     <y>306</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>widget</sender>
+   <signal>sort()</signal>
+   <receiver>listWidget_3</receiver>
+   <slot>sortItems()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>638</x>
+     <y>421</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>711</x>
+     <y>424</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>addListItem(QListWidgetItem*)</slot>
+ </slots>
+</ui>

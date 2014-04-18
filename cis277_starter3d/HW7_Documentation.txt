@@ -1,0 +1,24 @@
+Instructions:
+To split a quad into two triangles, select a single face and press the 'Split Quad' button. A new face will appear in the faces list.
+
+To add an edge between two faces that share a single vertex, select the two faces and the vertex and press the 'Shared Vertex to Edge' button. A new vertex will appear in the vertices list. Though visually, you will not see a difference in the appearance cube, moving this new vertex will provide visual evidence.
+
+To add a vertex on an edge, select a single half edge (it doesn't matter which half) and press the 'Add Vertex to Edge' button. A new vertex will appear in the vertices list. Again, you will not see a difference in the appearance of the cube, but moving the vertex will provide visual evidence.
+
+To remove a vertex, select the vertex as well as a half edge that points to the vertex (this half edge must be associated with a face; this may require some trial and error). Once the vertex and the half edge are selected, press 'Remove Vertex.' The lists will adjusts themselves to reflect deleted faces, half-edges, and the deleted vertex.
+
+To move a vertex, select it and input the new x, y, and z coordinates.
+
+To change the color of a face, select it and input the new r, g, b values.
+
+To change the name of a component, select it, then double click it in the QListWidget.
+
+Design choices:
+In order to consistently and constantly handle changing faces, vertices, normals, colors, and indices from the mesh operations, it was important to store all of them in separate std::vectors. I created a method that, given a face, traverses the half-edges of the face to populate the respective std::vectors. Since all mesh operation changes are reflected in the half-edge data structure, this provided for an efficient way to keep track of all the components needed for the gl buffer objects.
+
+Extra credit: 
+My program allows for the drawing of arbitrary meshes.
+
+Bugs:
+-If I add a vertex to the half edge named 'front3' and move the resulting vertex to (1, 0, .5), the right side of the cube does not connect to the new point. If, however, I add a vertex to the half edge named 'front0' and move the resulting vertex to (0, 1, .5), the top side of the cube does behave correctly. I seem to have implemented the pseudocode correctly, so I have no idea why this isn't working.
+-When I remove a vertex, the corresponding list widgets are not updating correctly - I have checked the values in my face vector to ensure that I am properly removing the faces, but the right face continues to show up in the widget (when I remove v0, which should remove the top, front, and right faces) even when it is no longer in the face vector. 

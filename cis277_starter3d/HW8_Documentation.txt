@@ -1,0 +1,2 @@
+Instructions:
+To select a face, click on it; its corners will be highlighted, and you will be able to see the ray that extends from the camera to the point that was clicked. Additionally, the selected face will be selected in the list of faces. Keep in mind that in order that the visual representation of the cube is deceiving in terms of which faces can actually be selected. Since all rays originate from the camera position, selecting a certain face may require moving the camera slightly.
